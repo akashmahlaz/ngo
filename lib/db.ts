@@ -1,37 +1,58 @@
-// This approach is taken from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
-import { MongoClient, ServerApiVersion } from "mongodb"
- 
-if (!process.env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
-}
- 
-const uri = process.env.MONGODB_URI
-const options = {
+// This approach is adapted from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
+import { env } from "@/lib/env"
+import { MongoClient, MongoClientOptions, ServerApiVersion } from "mongodb"
+
+const uri = env.MONGODB_URI
+
+const options: MongoClientOptions = {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
   },
+  maxPoolSize: 10,
+  minPoolSize: 2,
+  maxIdleTimeMS: 30_000,
+  serverSelectionTimeoutMS: 5_000,
+  socketTimeoutMS: 45_000,
+  connectTimeoutMS: 10_000,
+  retryWrites: true,
+  retryReads: true,
 }
- 
+
+declare global {
+  // eslint-disable-next-line no-var
+  var _mongoClient: MongoClient | undefined
+}
+
 let client: MongoClient
- 
-if (process.env.NODE_ENV === "development") {
-  // In development mode, use a global variable so that the value
-  // is preserved across module reloads caused by HMR (Hot Module Replacement).
-  const globalWithMongo = global as typeof globalThis & {
-    _mongoClient?: MongoClient
+
+if (env.NODE_ENV !== "production") {
+  if (!global._mongoClient) {
+    global._mongoClient = new MongoClient(uri, options)
   }
- 
-  if (!globalWithMongo._mongoClient) {
-    globalWithMongo._mongoClient = new MongoClient(uri, options)
-  }
-  client = globalWithMongo._mongoClient
+  client = global._mongoClient
 } else {
-  // In production mode, it's best to not use a global variable.
   client = new MongoClient(uri, options)
 }
- 
-// Export a module-scoped MongoClient. By doing this in a
-// separate module, the client can be shared across functions.
+
+export async function checkDatabaseHealth(): Promise<boolean> {
+  try {
+    const connection = await client.connect()
+    await connection.db().admin().ping()
+    return true
+  } catch (error) {
+    console.error("Database health check failed:", error)
+    return false
+  }
+}
+
+export async function closeDatabaseConnection(): Promise<void> {
+  try {
+    await client.close()
+  } catch (error) {
+    console.error("Error closing database connection:", error)
+  }
+}
+
 export default client
