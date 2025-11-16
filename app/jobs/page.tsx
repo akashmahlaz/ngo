@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Skeleton } from "@/components/ui/skeleton"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { JobCard } from "@/components/job-card"
 import { 
@@ -179,10 +180,87 @@ export default function JobsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
-        <div className="container mx-auto px-4 py-12">
-          <div className="flex items-center justify-center py-20">
-            <Loader2 className="h-12 w-12 animate-spin text-purple-500" />
+      <div className="min-h-screen bg-linear-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
+        {/* Hero Skeleton */}
+        <div className="relative overflow-hidden bg-linear-to-br from-purple-600 via-pink-500 to-orange-500">
+          <div className="relative container mx-auto px-4 py-16 sm:py-20">
+            <div className="max-w-3xl mx-auto text-center space-y-6">
+              <Skeleton className="h-6 w-48 mx-auto bg-white/30" />
+              <Skeleton className="h-14 w-full max-w-2xl mx-auto bg-white/30" />
+              <Skeleton className="h-6 w-3/4 mx-auto bg-white/20" />
+              <Skeleton className="h-14 w-full max-w-2xl mx-auto bg-white/40" />
+              <div className="flex flex-wrap justify-center gap-2 mt-6">
+                {[...Array(6)].map((_, i) => (
+                  <Skeleton key={i} className="h-7 w-24 bg-white/20" />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Filters and Results Skeleton */}
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex items-center justify-between mb-6">
+            <Skeleton className="h-6 w-40" />
+            <div className="flex gap-2">
+              <Skeleton className="h-10 w-32" />
+              <Skeleton className="h-10 w-24" />
+            </div>
+          </div>
+          
+          <div className="grid gap-6 lg:grid-cols-4">
+            {/* Sidebar Skeleton */}
+            <div className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-24" />
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <Skeleton className="h-4 w-4" />
+                      <Skeleton className="h-4 flex-1" />
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-32" />
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <Skeleton className="h-4 w-4" />
+                      <Skeleton className="h-4 flex-1" />
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Jobs Grid Skeleton */}
+            <div className="lg:col-span-3 space-y-4">
+              {[...Array(6)].map((_, i) => (
+                <Card key={i} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex gap-4">
+                      <Skeleton className="h-16 w-16 rounded-lg shrink-0" />
+                      <div className="flex-1 space-y-3">
+                        <Skeleton className="h-6 w-3/4" />
+                        <Skeleton className="h-4 w-1/2" />
+                        <Skeleton className="h-20 w-full" />
+                        <div className="flex flex-wrap gap-2">
+                          <Skeleton className="h-6 w-20" />
+                          <Skeleton className="h-6 w-24" />
+                          <Skeleton className="h-6 w-16" />
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -190,9 +268,9 @@ export default function JobsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
+    <div className="min-h-screen bg-linear-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-purple-600 via-pink-500 to-orange-500">
+      <div className="relative overflow-hidden bg-linear-to-br from-purple-600 via-pink-500 to-orange-500">
         {/* Decorative blur circles */}
         <div className="absolute -left-20 -top-24 h-72 w-72 rounded-full bg-white/30 blur-3xl opacity-40"></div>
         <div className="absolute -right-20 top-10 h-96 w-96 rounded-full bg-white/20 blur-3xl opacity-40"></div>
@@ -404,7 +482,7 @@ export default function JobsPage() {
                 <Button 
                   variant="outline" 
                   size="icon"
-                  className="flex-shrink-0"
+                  className="shrink-0"
                   onClick={() => setViewMode(viewMode === "grid" ? "list" : "grid")}
                 >
                   {viewMode === "grid" ? <List className="h-4 w-4" /> : <Grid className="h-4 w-4" />}

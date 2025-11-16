@@ -9,7 +9,7 @@ interface PasswordStrengthProps {
 
 export function PasswordStrength({ password, className }: PasswordStrengthProps) {
   const strength = useMemo(() => {
-    if (!password) return { score: 0, label: "", color: "", width: 0 }
+    if (!password) return { score: 0, label: "", color: "", width: 0, checks: undefined }
 
     let score = 0
     const checks = {
@@ -47,7 +47,7 @@ export function PasswordStrength({ password, className }: PasswordStrengthProps)
     return { score, label, color, width: score, checks }
   }, [password])
 
-  if (!password) return null
+  if (!password || !strength.checks) return null
 
   return (
     <div className={cn("space-y-2", className)}>

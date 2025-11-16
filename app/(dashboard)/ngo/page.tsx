@@ -62,13 +62,15 @@ export default async function NgoDashboard() {
 
   // Get NGO data
   const ngo = await users.findOne({ _id: ngoId })
-  if (!ngo) redirect("/signin")
   
-  // If admin viewing, show demo data or check if they have NGO role
+  // Check if admin first to prevent redirect loop
   const isAdmin = sessionData.isAdmin || false
   
+  // Non-admins must have a valid NGO account
+  if (!ngo && !isAdmin) redirect("/signin")
+  
   // If admin and not an NGO user, show demo interface
-  if (isAdmin && (!ngo.role || ngo.role !== "ngo")) {
+  if (isAdmin && (!ngo || !ngo.role || ngo.role !== "ngo")) {
     // Admin viewing without NGO role - show demo/empty state with sample data
     return (
       <div className="space-y-8">
@@ -170,6 +172,12 @@ export default async function NgoDashboard() {
         </Card>
       </div>
     )
+  }
+  
+  // At this point, ngo must exist for non-admins
+  if (!ngo) {
+    // This shouldn't happen, but TypeScript needs this check
+    redirect("/signin")
   }
   
   const plan = sessionData.plan || "free"

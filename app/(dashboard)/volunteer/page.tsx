@@ -32,15 +32,19 @@ export default async function VolunteerDashboard() {
   
   // Get user data
   const user = await users.findOne({ _id: userId })
-  if (!user) redirect("/signin")
-
-  // If admin viewing, show demo data or check if they have volunteer role
+  
+  // Check if admin first to prevent redirect loop
   const isAdmin = (session as any).isAdmin || false
-  if (isAdmin && (!user.role || user.role !== "volunteer")) {
+  
+  // Non-admins must have a valid volunteer account
+  if (!user && !isAdmin) redirect("/signin")
+  
+  // If admin viewing, show demo data or check if they have volunteer role
+  if (isAdmin && (!user || !user.role || user.role !== "volunteer")) {
     // Admin viewing without volunteer role - show demo/empty state
     return (
       <div className="space-y-6 sm:space-y-8">
-        <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-xl p-4 sm:p-6 shadow-lg">
+        <div className="bg-linear-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-xl p-4 sm:p-6 shadow-lg">
           <div className="flex flex-col sm:flex-row items-start gap-3">
             <div className="h-10 w-10 rounded-full bg-yellow-500 dark:bg-yellow-600 flex items-center justify-center shrink-0">
               <AlertCircle className="h-6 w-6 text-white" />
@@ -137,6 +141,12 @@ export default async function VolunteerDashboard() {
         </Card>
       </div>
     )
+  }
+
+  // At this point, user must exist for non-admins
+  if (!user) {
+    // This shouldn't happen, but TypeScript needs this check
+    redirect("/signin")
   }
 
   const isPlus = (session as any).plan?.includes("plus")

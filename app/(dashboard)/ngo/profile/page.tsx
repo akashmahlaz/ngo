@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
+import { Skeleton } from "@/components/ui/skeleton"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Separator } from "@/components/ui/separator"
@@ -157,14 +158,73 @@ export default function NgoProfile() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <div className="animate-pulse space-y-8">
-          <div className="h-8 bg-gray-200 rounded w-1/4"></div>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="h-64 bg-gray-200 rounded"></div>
-            <div className="md:col-span-2 space-y-6">
-              <div className="h-32 bg-gray-200 rounded"></div>
-              <div className="h-32 bg-gray-200 rounded"></div>
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="space-y-6">
+          {/* Header Skeleton */}
+          <div className="flex items-center justify-between">
+            <div className="space-y-2">
+              <Skeleton className="h-9 w-48" />
+              <Skeleton className="h-4 w-96" />
+            </div>
+            <Skeleton className="h-10 w-28" />
+          </div>
+
+          {/* Cover Photo Skeleton */}
+          <Skeleton className="h-48 w-full rounded-xl" />
+
+          {/* Main Grid */}
+          <div className="grid gap-6 lg:grid-cols-3">
+            {/* Sidebar Skeleton */}
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <Skeleton className="h-20 w-20 rounded-lg" />
+                    <div className="space-y-2 flex-1">
+                      <Skeleton className="h-6 w-32" />
+                      <Skeleton className="h-4 w-24" />
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-3/4" />
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-28" />
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <Skeleton className="h-16 w-full" />
+                  <Skeleton className="h-16 w-full" />
+                  <Skeleton className="h-16 w-full" />
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Content Skeleton */}
+            <div className="lg:col-span-2 space-y-6">
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-32" />
+                </CardHeader>
+                <CardContent>
+                  <Skeleton className="h-24 w-full" />
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-24" />
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <Skeleton className="h-20 w-full" />
+                    <Skeleton className="h-20 w-full" />
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
@@ -185,9 +245,9 @@ export default function NgoProfile() {
   // VIEW MODE - Beautiful Profile Display
   if (!isEditMode) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
+      <div className="min-h-screen bg-linear-to-b from-background to-muted/20">
         {/* Cover Photo Section */}
-        <div className="relative h-80 bg-gradient-to-br from-primary/90 via-primary to-primary/80 overflow-hidden">
+        <div className="relative h-80 bg-linear-to-br from-primary/90 via-primary to-primary/80 overflow-hidden">
           {coverPhotoUrl ? (
             <div className="absolute inset-0">
               <img 
@@ -197,7 +257,7 @@ export default function NgoProfile() {
               />
             </div>
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary to-primary/80">
+            <div className="absolute inset-0 bg-linear-to-br from-primary/90 via-primary to-primary/80">
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />
@@ -229,7 +289,7 @@ export default function NgoProfile() {
                   <div className="relative -mt-20">
                     <Avatar className="h-40 w-40 border-8 border-background shadow-2xl">
                       <AvatarImage src={logoUrl} alt={profile.orgName} />
-                      <AvatarFallback className="bg-gradient-to-br from-primary via-primary/80 to-primary/60 text-white text-5xl font-bold">
+                      <AvatarFallback className="bg-linear-to-br from-primary via-primary/80 to-primary/60 text-white text-5xl font-bold">
                         {profile.orgName?.charAt(0).toUpperCase() || "N"}
                       </AvatarFallback>
                     </Avatar>
@@ -377,7 +437,7 @@ export default function NgoProfile() {
 
                 {/* Years Active Badge */}
                 {yearsActive > 0 && (
-                  <Card className="shadow-lg bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+                  <Card className="shadow-lg bg-linear-to-br from-primary/5 to-primary/10 border-primary/20">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4">
                         <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
@@ -451,7 +511,7 @@ export default function NgoProfile() {
 
                     {profile.address && (
                       <div className="flex items-start gap-3">
-                        <div className="h-10 w-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center flex-shrink-0">
+                        <div className="h-10 w-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center shrink-0">
                           <MapPin className="h-5 w-5 text-purple-600 dark:text-purple-400" />
                         </div>
                         <div className="flex-1 min-w-0">

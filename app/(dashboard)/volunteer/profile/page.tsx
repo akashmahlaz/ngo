@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
@@ -566,25 +566,35 @@ export default function VolunteerProfile() {
   // EDIT MODE (original form)
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold">Edit Profile</h1>
-          <p className="text-muted-foreground">Update your volunteer profile information</p>
+          <h1 className="text-2xl sm:text-3xl font-bold">Edit Profile</h1>
+          <p className="text-sm text-muted-foreground mt-1">Update your volunteer profile information</p>
         </div>
         <Button variant="outline" onClick={() => setEditMode(false)}>
           Cancel
         </Button>
       </div>
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-3">
         {/* Avatar Upload */}
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Profile Picture</h2>
-          <ImageUploader
-            currentImage={profile.avatarUrl || undefined}
-            onUpload={handleImageUpload}
-            onRemove={handleImageRemove}
-          />
-        </div>
+        <Card className="h-fit">
+          <CardHeader>
+            <CardTitle className="text-base flex items-center gap-2">
+              <User className="h-4 w-4" />
+              Profile Picture
+            </CardTitle>
+            <CardDescription className="text-xs">
+              Upload a clear photo of yourself
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ImageUploader
+              currentImage={profile.avatarUrl || undefined}
+              onUpload={handleImageUpload}
+              onRemove={handleImageRemove}
+            />
+          </CardContent>
+        </Card>
         {/* Basic Information */}
         <div className="md:col-span-2 space-y-6">
           {/* ...existing code for edit form... */}
@@ -979,8 +989,20 @@ export default function VolunteerProfile() {
           </Card>
         </div>
       </div>
-      <div className="mt-8 flex justify-end">
-  <Button onClick={() => saveProfile()} disabled={saving} size="lg">
+      <div className="mt-8 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
+        <Button 
+          variant="outline" 
+          onClick={() => setEditMode(false)}
+          className="order-2 sm:order-1"
+        >
+          Cancel
+        </Button>
+        <Button 
+          onClick={() => saveProfile()} 
+          disabled={saving} 
+          size="lg"
+          className="order-1 sm:order-2"
+        >
           <Save className="h-4 w-4 mr-2" />
           {saving ? "Saving..." : "Save Changes"}
         </Button>
