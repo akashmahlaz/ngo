@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
-
+import { Skeleton } from "@/components/ui/skeleton"
 import { ImageUploader } from "@/components/upload/image-uploader"
 import { Save, Plus, X, Globe, Lock, User, MapPin, Briefcase, GraduationCap, DollarSign } from "lucide-react"
 import { toast } from "sonner"
@@ -240,14 +240,73 @@ export default function VolunteerProfile() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <div className="animate-pulse space-y-8">
-          <div className="h-8 bg-gray-200 rounded w-1/4"></div>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="h-64 bg-gray-200 rounded"></div>
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <div className="space-y-6">
+          {/* Header Skeleton */}
+          <div className="flex items-center justify-between">
+            <div className="space-y-2">
+              <Skeleton className="h-9 w-48" />
+              <Skeleton className="h-4 w-96" />
+            </div>
+            <Skeleton className="h-10 w-28" />
+          </div>
+
+          {/* Main Grid */}
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Sidebar Skeleton */}
+            <div className="space-y-4">
+              <div className="flex flex-col items-center gap-4">
+                <Skeleton className="h-32 w-32 rounded-full" />
+                <Skeleton className="h-6 w-32" />
+                <Skeleton className="h-4 w-24" />
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Skeleton className="h-6 w-16" />
+                  <Skeleton className="h-6 w-20" />
+                  <Skeleton className="h-6 w-14" />
+                </div>
+                <Skeleton className="h-6 w-20" />
+              </div>
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-20" />
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-3/4" />
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Content Skeleton */}
             <div className="md:col-span-2 space-y-6">
-              <div className="h-32 bg-gray-200 rounded"></div>
-              <div className="h-32 bg-gray-200 rounded"></div>
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-16" />
+                </CardHeader>
+                <CardContent>
+                  <Skeleton className="h-20 w-full" />
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-28" />
+                </CardHeader>
+                <CardContent>
+                  <Skeleton className="h-32 w-full" />
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <Skeleton className="h-5 w-24" />
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <Skeleton className="h-24 w-full" />
+                    <Skeleton className="h-24 w-full" />
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>

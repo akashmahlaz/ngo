@@ -184,7 +184,12 @@ export function UniversalNavbar() {
               {/* Mobile Menu */}
               <Drawer open={mobileOpen} onOpenChange={setMobileOpen}>
                 <DrawerTrigger asChild>
-                  <Button variant="ghost" size="sm" className="rounded-xl hover:bg-purple-100 dark:hover:bg-purple-900/30">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="rounded-xl hover:bg-purple-100 dark:hover:bg-purple-900/30"
+                    aria-label="Open navigation menu"
+                  >
                     <Menu className="h-4 w-4" />
                   </Button>
                 </DrawerTrigger>
@@ -383,6 +388,7 @@ export function UniversalNavbar() {
                   size="sm" 
                   className="rounded-xl hover:bg-purple-100 dark:hover:bg-purple-900/30"
                   onClick={() => setCmdOpen(true)}
+                  aria-label="Open search"
                 >
                   <Search className="h-4 w-4" />
                 </Button>
@@ -492,6 +498,7 @@ export function UniversalNavbar() {
                           variant="outline"
                           className="gap-2 rounded-xl bg-purple-50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-800 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:border-purple-400 dark:hover:border-purple-600"
                           onClick={() => setCmdOpen(true)}
+                          aria-label="Open search (Cmd+K)"
                         >
                           <CommandIcon className="h-4 w-4 text-purple-600" />
                           <span className="hidden lg:inline">Search...</span>
@@ -530,7 +537,11 @@ export function UniversalNavbar() {
                       {/* User Menu */}
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" className={`relative p-1 rounded-xl ${isAdmin ? 'hover:bg-red-100 dark:hover:bg-red-900/30' : 'hover:bg-purple-100 dark:hover:bg-purple-900/30'}`}>
+                          <Button 
+                            variant="ghost" 
+                            className={`relative p-1 rounded-xl ${isAdmin ? 'hover:bg-red-100 dark:hover:bg-red-900/30' : 'hover:bg-purple-100 dark:hover:bg-purple-900/30'}`}
+                            aria-label="Open user menu"
+                          >
                             <Avatar className={`h-8 w-8 ring-2 ${isAdmin ? 'ring-red-400 dark:ring-red-600 hover:ring-red-500 dark:hover:ring-red-500' : 'ring-purple-400 dark:ring-purple-600 hover:ring-purple-500 dark:hover:ring-purple-500'} transition-all`}>
                               <AvatarImage src={user?.avatarUrl} />
                               <AvatarFallback className={`${isAdmin ? 'bg-gradient-to-br from-red-600 to-orange-600' : 'bg-gradient-to-br from-purple-600 to-pink-600'} text-white font-bold`}>

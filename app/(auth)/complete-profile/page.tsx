@@ -146,7 +146,7 @@ function CompleteProfileContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/5 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-primary/5 via-background to-accent/5 flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-2">
           <CardTitle className="text-2xl">Complete Your Profile</CardTitle>
@@ -213,7 +213,7 @@ function CompleteProfileContent() {
               {role === "volunteer" && (
                 <div className="p-4 bg-accent/10 rounded-lg border border-accent/20">
                   <div className="flex gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
                     <div>
                       <div className="font-medium">Profile info</div>
                       <div className="text-sm text-muted-foreground">
@@ -257,7 +257,7 @@ function CompleteProfileContent() {
                       onClick={() => !loading && setSelectedPlan(planOption.value)}
                       className={`w-full text-left rounded-lg border-2 p-4 transition-all ${
                         isActive
-                          ? "border-purple-500 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 shadow-lg"
+                          ? "border-purple-500 bg-linear-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 shadow-lg"
                           : "border-muted hover:border-purple-300 dark:hover:border-purple-700"
                       }`}
                     >
@@ -266,14 +266,14 @@ function CompleteProfileContent() {
                           <div className="flex items-center gap-2">
                             <h3 className="font-semibold text-lg">{planOption.label}</h3>
                             {isActive && (
-                              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-purple-600 to-pink-600 text-white">
+                              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-linear-to-br from-purple-600 to-pink-600 text-white">
                                 <Check className="h-3 w-3" />
                               </span>
                             )}
                           </div>
                           <p className="text-xs text-muted-foreground mt-1">{planOption.description}</p>
                         </div>
-                        <p className="font-semibold text-base bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        <p className="font-semibold text-base bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                           {planOption.price}
                         </p>
                       </div>

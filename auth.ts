@@ -43,37 +43,30 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Google({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
-      allowDangerousEmailAccountLinking: true, // Link accounts with same email
     }),
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID!,
       clientSecret: process.env.AUTH_GITHUB_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
     Facebook({
       clientId: process.env.AUTH_FACEBOOK_ID!,
       clientSecret: process.env.AUTH_FACEBOOK_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
     LinkedIn({
       clientId: process.env.AUTH_LINKEDIN_ID!,
       clientSecret: process.env.AUTH_LINKEDIN_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
     Instagram({
       clientId: process.env.AUTH_INSTAGRAM_ID!,
       clientSecret: process.env.AUTH_INSTAGRAM_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
     Twitter({
       clientId: process.env.AUTH_TWITTER_ID!,
       clientSecret: process.env.AUTH_TWITTER_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
     Apple({
       clientId: process.env.AUTH_APPLE_ID!,
       clientSecret: process.env.AUTH_APPLE_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
     Credentials({
       name: "Credentials",
@@ -83,7 +76,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
       authorize: async (raw) => {
         try {
-          const schema = z.object({ email: z.string().email(), password: z.string().min(6) })
+          const schema = z.object({ 
+            email: z.string().email(), 
+            password: z.string().min(12, "Password must be at least 12 characters")
+          })
           const parsed = schema.safeParse(raw)
           if (!parsed.success) return null
 
@@ -97,6 +93,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           if (!ok) return null
 
           return {
+            _id: user._id.toString(),
             id: user._id.toString(),
             name: user.name ?? null,
             email: user.email ?? null,

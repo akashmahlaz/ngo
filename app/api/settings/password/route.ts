@@ -3,6 +3,18 @@ import { auth } from "@/auth"
 import { getCollections } from "@/lib/models"
 import { ObjectId } from "mongodb"
 import bcrypt from "bcryptjs"
+import { z } from "zod"
+
+const passwordSchema = z.object({
+  currentPassword: z.string().min(1),
+  newPassword: z
+    .string()
+    .min(12, "Password must be at least 12 characters")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/[0-9]/, "Password must contain at least one number")
+    .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character"),
+})
 
 export async function PATCH(request: NextRequest) {
   try {
@@ -12,14 +24,16 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { currentPassword, newPassword } = body
-
-    if (!currentPassword || !newPassword) {
+    const parsed = passwordSchema.safeParse(body)
+    
+    if (!parsed.success) {
       return NextResponse.json(
-        { error: "Current password and new password are required" },
+        { error: parsed.error.issues[0]?.message || "Invalid input" },
         { status: 400 }
       )
     }
+
+    const { currentPassword, newPassword } = parsed.data
 
     const { users } = await getCollections()
     const userId = new ObjectId((session as any).userId)

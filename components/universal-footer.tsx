@@ -138,19 +138,19 @@ export function UniversalFooter() {
   }
 
   return (
-    <footer className="bg-gradient-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-neutral-950 dark:via-purple-950/10 dark:to-pink-950/10 border-t-2 border-purple-200 dark:border-purple-800">
+    <footer className="bg-linear-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-neutral-950 dark:via-purple-950/10 dark:to-pink-950/10 border-t-2 border-purple-200 dark:border-purple-800">
       <div className="container mx-auto px-4 py-12">
         
         {/* Authenticated User Section */}
         {isAuthenticated && (
           <div className="mb-12">
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 border border-purple-200 dark:border-purple-800 rounded-4xl p-6 shadow-lg shadow-purple-500/10">
+            <div className="bg-linear-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 border border-purple-200 dark:border-purple-800 rounded-4xl p-6 shadow-lg shadow-purple-500/10">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-4xl bg-gradient-to-br from-purple-600 via-pink-600 to-orange-600 flex items-center justify-center relative shadow-lg">
+                  <div className="h-12 w-12 rounded-4xl bg-linear-to-br from-purple-600 via-pink-600 to-orange-600 flex items-center justify-center relative shadow-lg">
                     <Image src={"/ASIA.png"} alt="Just Because Asia" width={100} height={100} className="h-12 w-12 rounded-4xl text-white" />
                     {isPlusUser && (
-                      <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center border-2 border-white dark:border-neutral-950 shadow-lg">
+                      <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-linear-to-r from-purple-600 to-pink-600 flex items-center justify-center border-2 border-white dark:border-neutral-950 shadow-lg">
                         <Sparkles className="h-3 w-3 text-white" />
                       </div>
                     )}
@@ -159,7 +159,7 @@ export function UniversalFooter() {
                     <div className="flex items-center gap-2 mb-1">
                       <h3 className="font-bold text-lg">Welcome back, {user?.name?.split(' ')[0] || 'there'}!</h3>
                       {isPlusUser && (
-                        <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0 shadow-lg">
+                        <Badge className="bg-linear-to-r from-purple-600 to-pink-600 text-white border-0 shadow-lg">
                           <Crown className="h-3 w-3 mr-1" />
                           Plus
                         </Badge>
@@ -181,7 +181,7 @@ export function UniversalFooter() {
                       href={action.href}
                       className="group flex items-center gap-3 p-3 rounded-2xl bg-white/60 dark:bg-neutral-900/60 hover:bg-white dark:hover:bg-neutral-900 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-700 transition-all"
                     >
-                      <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center group-hover:shadow-lg transition-all">
+                      <div className="h-8 w-8 rounded-xl bg-linear-to-br from-purple-600 to-pink-600 flex items-center justify-center group-hover:shadow-lg transition-all">
                         <action.icon className="h-4 w-4 text-white" />
                       </div>
                       <div className="hidden xl:block">
@@ -198,7 +198,7 @@ export function UniversalFooter() {
 
         {/* Newsletter Signup */}
         <div className="mb-12">
-          <div className="relative bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 rounded-3xl p-8 text-center overflow-hidden shadow-xl">
+          <div className="relative bg-linear-to-r from-purple-600 via-pink-600 to-orange-600 rounded-3xl p-8 text-center overflow-hidden shadow-xl">
             {/* Decorative elements */}
             <div className="absolute -top-10 -left-10 h-32 w-32 rounded-full bg-white/10 blur-2xl"></div>
             <div className="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl"></div>
@@ -245,7 +245,7 @@ export function UniversalFooter() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
           {Object.entries(footerSections).map(([key, section]) => (
             <div key={key} className="space-y-4">
-              <h4 className="font-bold text-sm uppercase tracking-wide bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <h4 className="font-bold text-sm uppercase tracking-wide bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -264,7 +264,7 @@ export function UniversalFooter() {
           ))}
         </div>
 
-        <Separator className="mb-8 bg-gradient-to-r from-transparent via-purple-300 dark:via-purple-800 to-transparent" />
+        <Separator className="mb-8 bg-linear-to-r from-transparent via-purple-300 dark:via-purple-800 to-transparent" />
 
         {/* Bottom Section */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -279,7 +279,7 @@ export function UniversalFooter() {
                 className="rounded-2xl group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all"
               />
               <div>
-                <span className="font-bold text-lg bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
+                <span className="font-bold text-lg bg-linear-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
                   Just Because Asia
                 </span>
                 <p className="text-xs text-muted-foreground -mt-1">
@@ -341,7 +341,7 @@ export function UniversalFooter() {
           </div>
         </div>
 
-        <Separator className="mt-8 mb-6 bg-gradient-to-r from-transparent via-purple-300 dark:via-purple-800 to-transparent" />
+        <Separator className="mt-8 mb-6 bg-linear-to-r from-transparent via-purple-300 dark:via-purple-800 to-transparent" />
 
         {/* Final Copyright */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-center sm:text-left">
