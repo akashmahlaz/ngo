@@ -242,7 +242,7 @@ export default function JobsPage() {
             {/* Jobs Grid Skeleton */}
             <div className="lg:col-span-3 space-y-4">
               {[...Array(6)].map((_, i) => (
-                <Card key={i} className="hover:shadow-lg transition-shadow">
+                <Card key={i} className="card-hover">
                   <CardContent className="p-6">
                     <div className="flex gap-4">
                       <Skeleton className="h-16 w-16 rounded-lg shrink-0" />

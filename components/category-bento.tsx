@@ -11,23 +11,23 @@ const cats = [
 
 export function CategoryBento() {
   return (
-    <section className="container mx-auto px-4 py-12">
+    <section className="section-container">
       <div className="mb-8">
-        <h2 className="text-balance text-2xl font-semibold md:text-3xl">Explore categories</h2>
+        <h2 className="gradient-text text-balance text-2xl font-semibold md:text-3xl">Explore categories</h2>
         <p className="text-muted-foreground">Find roles that match your mission and skills.</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
         {cats.map((c) => (
           <Link key={c.title} href={c.href}>
-            <Card className="group overflow-hidden border transition hover:shadow-sm">
+            <Card className="impact-card card-hover-lift overflow-hidden border">
               <CardHeader className="p-0">
                 <div className="relative h-40 w-full">
                   <Image
                     src={`/next.svg`}
                     alt={`${c.title} volunteer opportunities`}
                     fill
-                    className="object-cover transition group-hover:scale-[1.02]"
+                    className="object-cover scale-hover"
                   />
                 </div>
               </CardHeader>

@@ -88,7 +88,7 @@ export function PlanBadge({ showUpgradePrompt = false }: PlanBadgeProps) {
   return (
     <div className="flex items-center gap-2">
       {isPlusUser && !isPlanExpired && (
-        <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-medium">
+        <div className="flex items-center gap-1 px-2 py-1 rounded-md bg-linear-to-r from-yellow-500 to-orange-500 text-white text-xs font-medium">
           <Crown className="h-3 w-3" />
           Plus
         </div>

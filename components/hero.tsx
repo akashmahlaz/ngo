@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
-import { Heart, Users, Target, ArrowRight, Sparkles } from "lucide-react"
+import { Heart, Users, Target, ArrowRight, Sparkles, TrendingUp, Globe, Shield, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -37,13 +37,12 @@ const volunteerImages = [
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-neutral-50 via-white to-neutral-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950">
+    <div className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-teal-50/30 to-slate-50 dark:from-neutral-950 dark:via-teal-950/10 dark:to-neutral-950">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       
-      {/* Gradient Orbs */}
-      <div className="absolute left-1/4 top-20 h-72 w-72 animate-pulse rounded-full bg-purple-500/20 blur-3xl"></div>
-      <div className="absolute bottom-20 right-1/4 h-72 w-72 animate-pulse rounded-full bg-blue-500/20 blur-3xl" style={{ animationDelay: '1s' }}></div>
+      {/* Single Gradient Orb */}
+      <div className="absolute top-20 right-1/4 h-96 w-96 animate-pulse rounded-full bg-teal-500/10 blur-3xl"></div>
       
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
@@ -54,19 +53,19 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Badge variant="secondary" className="mb-4 w-fit border-purple-200 bg-purple-50 text-purple-700 dark:border-purple-800 dark:bg-purple-950 dark:text-purple-300">
-                <Sparkles className="mr-2 h-3 w-3" />
-                India&apos;s #1 Volunteer Platform
+              <Badge variant="secondary" className="mb-4 w-fit border-teal-200 bg-teal-50 text-teal-700 dark:border-teal-800 dark:bg-teal-950 dark:text-teal-300">
+                <Globe className="mr-2 h-3 w-3" />
+                🌍 Trusted by 1,200+ NGOs across Asia
               </Badge>
               
-              <h1 className="mb-6 text-4xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                Connect With
-                <span className="block bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent"> Purpose & Impact</span>
+              <h1 className="mb-6 text-4xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-5xl md:text-6xl lg:text-6xl">
+                Transform Lives Through
+                <span className="block gradient-text m-2"> Meaningful Action</span>
               </h1>
               
-              <p className="mb-8 max-w-xl text-base text-neutral-600 dark:text-neutral-400 sm:text-lg">
-                Join 50,000+ volunteers making a real difference. Find verified NGOs, 
-                track your contributions, and build a better tomorrow together.
+              <p className="mb-8 max-w-xl text-lg text-neutral-600 dark:text-neutral-400">
+                Connect with verified organizations, track your impact in real-time, 
+                and join Asia&apos;s largest community of changemakers.
               </p>
 
               {/* Stats */}
@@ -77,11 +76,15 @@ export function Hero() {
                   transition={{ delay: 0.2, duration: 0.5 }}
                 >
                   <div className="mb-2 flex items-center gap-2">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/30">
-                      <Users className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 dark:bg-teal-900/30 scale-hover-sm">
+                      <Users className="h-5 w-5 text-teal-600 dark:text-teal-400" />
                     </div>
                   </div>
                   <p className="text-2xl font-bold text-neutral-900 dark:text-white sm:text-3xl">50K+</p>
+                  <div className="flex items-center gap-1 text-xs text-teal-600 dark:text-teal-400">
+                    <TrendingUp className="h-3 w-3" />
+                    <span>12% this month</span>
+                  </div>
                   <p className="text-xs text-neutral-600 dark:text-neutral-400 sm:text-sm">Active Volunteers</p>
                 </motion.div>
                 
@@ -91,11 +94,15 @@ export function Hero() {
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
                   <div className="mb-2 flex items-center gap-2">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/30">
-                      <Target className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30">
+                      <Target className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
                     </div>
                   </div>
                   <p className="text-2xl font-bold text-neutral-900 dark:text-white sm:text-3xl">1.2K+</p>
+                  <div className="flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400">
+                    <Shield className="h-3 w-3" />
+                    <span>100% verified</span>
+                  </div>
                   <p className="text-xs text-neutral-600 dark:text-neutral-400 sm:text-sm">Verified NGOs</p>
                 </motion.div>
                 
@@ -105,12 +112,16 @@ export function Hero() {
                   transition={{ delay: 0.4, duration: 0.5 }}
                 >
                   <div className="mb-2 flex items-center gap-2">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
-                      <Heart className="h-5 w-5 text-green-600 dark:text-green-400" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-lime-100 dark:bg-lime-900/30">
+                      <Heart className="h-5 w-5 text-lime-600 dark:text-lime-400" />
                     </div>
                   </div>
                   <p className="text-2xl font-bold text-neutral-900 dark:text-white sm:text-3xl">2M+</p>
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400 sm:text-sm">Hours Impact</p>
+                  <div className="flex items-center gap-1 text-xs text-lime-600 dark:text-lime-400">
+                    <TrendingUp className="h-3 w-3" />
+                    <span>Growing daily</span>
+                  </div>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 sm:text-sm">Impact Hours</p>
                 </motion.div>
               </div>
 
@@ -122,14 +133,14 @@ export function Hero() {
                 className="flex flex-col gap-4 sm:flex-row"
               >
                 <Link href="/signup" className="w-full sm:w-auto">
-                  <Button size="lg" className="group w-full bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 hover:from-purple-700 hover:via-blue-700 hover:to-cyan-700">
-                    Start Volunteering
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <Button size="lg" className="btn-primary w-full group">
+                    Start Your Journey
+                    <ArrowRight className="ml-2 h-4 w-4 slide-in-right" />
                   </Button>
                 </Link>
                 <Link href="/jobs" className="w-full sm:w-auto">
-                  <Button size="lg" variant="outline" className="w-full border-neutral-300 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800">
-                    Browse Opportunities
+                  <Button size="lg" variant="outline" className="w-full border-teal-300 hover:bg-teal-50 dark:border-teal-700 dark:hover:bg-teal-950/30">
+                    Explore Opportunities
                   </Button>
                 </Link>
               </motion.div>
@@ -148,8 +159,8 @@ export function Hero() {
                   whileHover={{ y: -8, transition: { duration: 0.3 } }}
                   className={index === 1 || index === 2 ? "mt-6 sm:mt-8" : ""}
                 >
-                  <Card className="group relative h-full w-full overflow-hidden rounded-xl border border-neutral-200 bg-white p-3 shadow-sm transition-all hover:shadow-2xl hover:border-purple-300 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:shadow-purple-500/20 sm:p-4">
-                    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
+                  <Card className="group relative h-full w-full overflow-hidden rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm card-hover-lift hover:border-teal-300 dark:border-neutral-800 dark:bg-neutral-950 sm:p-4">
+                    <div className="relative aspect-3/4 w-full overflow-hidden rounded-xl">
                       <Image
                         src={volunteer.url}
                         alt={volunteer.name}
@@ -157,11 +168,11 @@ export function Hero() {
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent"></div>
                       
                       {/* Hover overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-purple-600/0 transition-all duration-300 group-hover:bg-purple-600/10">
-                        <div className="scale-0 text-white transition-transform duration-300 group-hover:scale-100">
+                      <div className="gradient-overlay absolute inset-0 flex items-center justify-center">
+                        <div className="fade-in-hover text-white">
                           <Heart className="h-8 w-8" />
                         </div>
                       </div>
@@ -169,7 +180,7 @@ export function Hero() {
                       <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
                         <p className="text-xs font-semibold sm:text-sm">{volunteer.name}</p>
                         <p className="text-[10px] text-neutral-300 sm:text-xs">{volunteer.role}</p>
-                        <p className="mt-1 text-[10px] text-purple-300 sm:text-xs">{volunteer.volunteers} volunteers</p>
+                        <p className="mt-1 text-[10px] text-teal-300 sm:text-xs">{volunteer.volunteers} volunteers</p>
                       </div>
                     </div>
                   </Card>
@@ -189,14 +200,14 @@ export function Hero() {
                 ease: "easeInOut",
               }}
             >
-              <div className="rounded-2xl border border-purple-200 bg-white p-4 shadow-xl dark:border-purple-800 dark:bg-neutral-900">
+              <div className="trust-badge rounded-2xl p-4 shadow-brand-xl">
                 <div className="text-center">
                   <div className="mb-2 flex items-center justify-center">
-                    <div className="h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
-                    <span className="ml-2 text-xs text-neutral-600 dark:text-neutral-400">Live</span>
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                    <span className="ml-2 text-xs text-neutral-600 dark:text-neutral-400">Verified</span>
                   </div>
-                  <p className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">100%</p>
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400">Verified</p>
+                  <p className="text-2xl font-bold gradient-text">100%</p>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400">Trusted NGOs</p>
                 </div>
               </div>
             </motion.div>

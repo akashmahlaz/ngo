@@ -138,19 +138,19 @@ export function UniversalFooter() {
   }
 
   return (
-    <footer className="bg-linear-to-br from-white via-purple-50/30 to-pink-50/30 dark:from-neutral-950 dark:via-purple-950/10 dark:to-pink-950/10 border-t-2 border-purple-200 dark:border-purple-800">
+    <footer className="bg-linear-to-br from-white via-teal-50/30 to-emerald-50/30 dark:from-neutral-950 dark:via-teal-950/10 dark:to-emerald-950/10 border-t-2 border-teal-200 dark:border-teal-800">
       <div className="container mx-auto px-4 py-12">
         
         {/* Authenticated User Section */}
         {isAuthenticated && (
           <div className="mb-12">
-            <div className="bg-linear-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 border border-purple-200 dark:border-purple-800 rounded-4xl p-6 shadow-lg shadow-purple-500/10">
+            <div className="bg-linear-to-br from-teal-50 to-emerald-50 dark:from-teal-950/20 dark:to-emerald-950/20 border border-teal-200 dark:border-teal-800 rounded-4xl p-6 shadow-lg shadow-teal-500/10">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-4xl bg-linear-to-br from-purple-600 via-pink-600 to-orange-600 flex items-center justify-center relative shadow-lg">
+                  <div className="h-12 w-12 rounded-4xl bg-linear-to-br from-teal-600 via-emerald-600 to-lime-600 flex items-center justify-center relative shadow-lg">
                     <Image src={"/ASIA.png"} alt="Just Because Asia" width={100} height={100} className="h-12 w-12 rounded-4xl text-white" />
                     {isPlusUser && (
-                      <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-linear-to-r from-purple-600 to-pink-600 flex items-center justify-center border-2 border-white dark:border-neutral-950 shadow-lg">
+                      <div className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-linear-to-r from-teal-600 to-emerald-600 flex items-center justify-center border-2 border-white dark:border-neutral-950 shadow-lg">
                         <Sparkles className="h-3 w-3 text-white" />
                       </div>
                     )}
@@ -159,7 +159,7 @@ export function UniversalFooter() {
                     <div className="flex items-center gap-2 mb-1">
                       <h3 className="font-bold text-lg">Welcome back, {user?.name?.split(' ')[0] || 'there'}!</h3>
                       {isPlusUser && (
-                        <Badge className="bg-linear-to-r from-purple-600 to-pink-600 text-white border-0 shadow-lg">
+                        <Badge className="bg-linear-to-r from-teal-600 to-emerald-600 text-white border-0 shadow-lg">
                           <Crown className="h-3 w-3 mr-1" />
                           Plus
                         </Badge>
@@ -179,9 +179,9 @@ export function UniversalFooter() {
                     <Link 
                       key={action.title}
                       href={action.href}
-                      className="group flex items-center gap-3 p-3 rounded-2xl bg-white/60 dark:bg-neutral-900/60 hover:bg-white dark:hover:bg-neutral-900 border-2 border-transparent hover:border-purple-300 dark:hover:border-purple-700 transition-all"
+                      className="group flex items-center gap-3 p-3 rounded-2xl bg-white/60 dark:bg-neutral-900/60 hover:bg-white dark:hover:bg-neutral-900 border-2 border-transparent hover:border-teal-300 dark:hover:border-teal-700 transition-all"
                     >
-                      <div className="h-8 w-8 rounded-xl bg-linear-to-br from-purple-600 to-pink-600 flex items-center justify-center group-hover:shadow-lg transition-all">
+                      <div className="h-8 w-8 rounded-xl bg-linear-to-br from-teal-600 to-emerald-600 flex items-center justify-center group-hover:shadow-lg transition-all">
                         <action.icon className="h-4 w-4 text-white" />
                       </div>
                       <div className="hidden xl:block">
@@ -198,7 +198,7 @@ export function UniversalFooter() {
 
         {/* Newsletter Signup */}
         <div className="mb-12">
-          <div className="relative bg-linear-to-r from-purple-600 via-pink-600 to-orange-600 rounded-3xl p-8 text-center overflow-hidden shadow-xl">
+          <div className="relative bg-linear-to-r from-teal-600 via-emerald-600 to-lime-600 rounded-3xl p-8 text-center overflow-hidden shadow-xl">
             {/* Decorative elements */}
             <div className="absolute -top-10 -left-10 h-32 w-32 rounded-full bg-white/10 blur-2xl"></div>
             <div className="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl"></div>
@@ -228,7 +228,7 @@ export function UniversalFooter() {
                 <Button 
                   type="submit"
                   disabled={subscribing}
-                  className="rounded-2xl bg-white text-purple-600 hover:bg-white/90 px-6 font-semibold shadow-lg"
+                  className="rounded-2xl bg-white text-teal-600 hover:bg-white/90 px-6 font-semibold shadow-lg"
                 >
                   {subscribing ? "Subscribing..." : "Subscribe"}
                   <ArrowRight className="h-4 w-4 ml-2" />
@@ -245,7 +245,7 @@ export function UniversalFooter() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
           {Object.entries(footerSections).map(([key, section]) => (
             <div key={key} className="space-y-4">
-              <h4 className="font-bold text-sm uppercase tracking-wide bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <h4 className="font-bold text-sm uppercase tracking-wide bg-linear-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -253,7 +253,7 @@ export function UniversalFooter() {
                   <li key={link.href}>
                     <Link 
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-purple-600 dark:hover:text-purple-400 transition-colors hover:underline underline-offset-4"
+                      className="text-sm text-muted-foreground hover:text-teal-600 dark:hover:text-teal-400 transition-colors hover:underline underline-offset-4"
                     >
                       {link.title}
                     </Link>
@@ -264,7 +264,7 @@ export function UniversalFooter() {
           ))}
         </div>
 
-        <Separator className="mb-8 bg-linear-to-r from-transparent via-purple-300 dark:via-purple-800 to-transparent" />
+        <Separator className="mb-8 bg-linear-to-r from-transparent via-teal-300 dark:via-teal-800 to-transparent" />
 
         {/* Bottom Section */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -279,7 +279,7 @@ export function UniversalFooter() {
                 className="rounded-2xl group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all"
               />
               <div>
-                <span className="font-bold text-lg bg-linear-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
+                <span className="font-bold text-lg bg-linear-to-r from-teal-600 via-emerald-600 to-lime-600 bg-clip-text text-transparent">
                   Just Because Asia
                 </span>
                 <p className="text-xs text-muted-foreground -mt-1">
@@ -292,22 +292,22 @@ export function UniversalFooter() {
           {/* Contact Info */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <div className="h-6 w-6 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
-                <Mail className="h-3 w-3 text-purple-600" />
+              <div className="h-6 w-6 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
+                <Mail className="h-3 w-3 text-teal-600" />
               </div>
-              <a href="mailto:hello@justbecauseasia.org" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              <a href="mailto:hello@justbecauseasia.org" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
                 hello@justbecauseasia.org
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <div className="h-6 w-6 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
-                <Phone className="h-3 w-3 text-pink-600" />
+              <div className="h-6 w-6 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+                <Phone className="h-3 w-3 text-emerald-600" />
               </div>
               <span>+1 (555) 123-4567</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="h-6 w-6 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                <MapPin className="h-3 w-3 text-orange-600" />
+              <div className="h-6 w-6 rounded-lg bg-lime-100 dark:bg-lime-900/30 flex items-center justify-center">
+                <MapPin className="h-3 w-3 text-lime-600" />
               </div>
               <span>Singapore, Asia</span>
             </div>
@@ -316,10 +316,10 @@ export function UniversalFooter() {
           {/* Social Links */}
           <div className="flex items-center gap-3">
             {[
-              { icon: Twitter, href: "https://twitter.com", label: "Twitter", color: "hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600" },
-              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600" },
-              { icon: Instagram, href: "https://instagram.com", label: "Instagram", color: "hover:bg-orange-100 dark:hover:bg-orange-900/30 hover:text-orange-600" },
-              { icon: Github, href: "https://github.com", label: "GitHub", color: "hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600" },
+              { icon: Twitter, href: "https://twitter.com", label: "Twitter", color: "hover:bg-teal-100 dark:hover:bg-teal-900/30 hover:text-teal-600" },
+              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:text-emerald-600" },
+              { icon: Instagram, href: "https://instagram.com", label: "Instagram", color: "hover:bg-lime-100 dark:hover:bg-lime-900/30 hover:text-lime-600" },
+              { icon: Github, href: "https://github.com", label: "GitHub", color: "hover:bg-teal-100 dark:hover:bg-teal-900/30 hover:text-teal-600" },
             ].map((social) => (
               <Button
                 key={social.label}
@@ -341,7 +341,7 @@ export function UniversalFooter() {
           </div>
         </div>
 
-        <Separator className="mt-8 mb-6 bg-linear-to-r from-transparent via-purple-300 dark:via-purple-800 to-transparent" />
+        <Separator className="mt-8 mb-6 bg-linear-to-r from-transparent via-teal-300 dark:via-teal-800 to-transparent" />
 
         {/* Final Copyright */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-center sm:text-left">
@@ -351,10 +351,10 @@ export function UniversalFooter() {
             for changemakers worldwide.
           </p>
           <div className="flex items-center justify-center sm:justify-end gap-6 text-xs text-muted-foreground">
-            <Link href="/privacy" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-pink-600 dark:hover:text-pink-400 transition-colors">Terms</Link>
-            <Link href="/cookies" className="hover:text-orange-600 dark:hover:text-orange-400 transition-colors">Cookies</Link>
-            <Link href="/accessibility" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Accessibility</Link>
+            <Link href="/privacy" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Terms</Link>
+            <Link href="/cookies" className="hover:text-lime-600 dark:hover:text-lime-400 transition-colors">Cookies</Link>
+            <Link href="/accessibility" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">Accessibility</Link>
           </div>
         </div>
       </div>

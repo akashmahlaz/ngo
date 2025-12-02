@@ -85,9 +85,9 @@ const categoryColors: Record<string, string> = {
   Education: "from-blue-500 to-blue-600",
   Healthcare: "from-red-500 to-red-600",
   Environment: "from-green-500 to-green-600",
-  Technology: "from-purple-500 to-purple-600",
-  Community: "from-orange-500 to-orange-600",
-  "Animal Welfare": "from-pink-500 to-pink-600",
+  Technology: "from-teal-500 to-teal-600",
+  Community: "from-amber-500 to-amber-600",
+  "Animal Welfare": "from-emerald-500 to-emerald-600",
 }
 
 const categoryImages: Record<string, string> = {
@@ -183,7 +183,7 @@ function StackedCard({ job, index, total }: { job: Job; index: number; total: nu
               className="object-cover transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-black/40 lg:to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-transparent via-black/20 to-black/40 lg:to-transparent"></div>
           </div>
 
           {/* Content */}
@@ -192,14 +192,14 @@ function StackedCard({ job, index, total }: { job: Job; index: number; total: nu
             <div className="lg:w-1/2 p-6 lg:p-8 flex flex-col justify-between lg:justify-end">
               <div className="lg:hidden">
                 {/* Category Badge */}
-                <Badge className={`bg-gradient-to-r ${categoryColors[job.category || 'Community']} text-white border-0 mb-4`}>
+                <Badge className={`bg-linear-to-r ${categoryColors[job.category || 'Community']} text-white border-0 mb-4`}>
                   {job.category || 'Community'}
                 </Badge>
               </div>
               
               <div className="hidden lg:block">
                 {/* Desktop: Category Badge at bottom */}
-                <Badge className={`bg-gradient-to-r ${categoryColors[job.category || 'Community']} text-white border-0`}>
+                <Badge className={`bg-linear-to-r ${categoryColors[job.category || 'Community']} text-white border-0`}>
                   {job.category || 'Community'}
                 </Badge>
               </div>
@@ -210,7 +210,7 @@ function StackedCard({ job, index, total }: { job: Job; index: number; total: nu
               <div className="space-y-4">
                 {/* Mobile: Category badge */}
                 <div className="lg:hidden">
-                  <Badge className={`bg-gradient-to-r ${categoryColors[job.category || 'Community']} text-white border-0`}>
+                  <Badge className={`bg-linear-to-r ${categoryColors[job.category || 'Community']} text-white border-0`}>
                     {job.category || 'Community'}
                   </Badge>
                 </div>
@@ -262,33 +262,33 @@ function StackedCard({ job, index, total }: { job: Job; index: number; total: nu
                 <div className="grid grid-cols-2 gap-3">
                   {/* Location */}
                   <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                    <MapPin className="h-4 w-4 flex-shrink-0" />
+                    <MapPin className="h-4 w-4 shrink-0" />
                     <span className="line-clamp-1">{job.location || 'Remote'}</span>
                   </div>
 
                   {/* Type */}
                   <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                    <Briefcase className="h-4 w-4 flex-shrink-0" />
+                    <Briefcase className="h-4 w-4 shrink-0" />
                     <span>{job.type || 'Flexible'}</span>
                   </div>
 
                   {/* Time */}
                   <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                    <Clock className="h-4 w-4 flex-shrink-0" />
+                    <Clock className="h-4 w-4 shrink-0" />
                     <span>{getTimeAgo(job.createdAt)}</span>
                   </div>
 
                   {/* Applicants */}
                   {job.applicationsCount !== undefined && (
                     <div className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                      <Users className="h-4 w-4 flex-shrink-0" />
+                      <Users className="h-4 w-4 shrink-0" />
                       <span>{job.applicationsCount} applied</span>
                     </div>
                   )}
                 </div>
 
                 {/* Apply Button */}
-                <Button className="w-full group/btn bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white">
+                <Button className="w-full group/btn bg-linear-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white shadow-brand-lg">
                   Apply Now
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                 </Button>

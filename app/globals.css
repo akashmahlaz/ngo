@@ -3,6 +3,45 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================
+   UNIFIED DESIGN SYSTEM - globals.css
+   ============================================
+   
+   This file controls ALL design tokens, colors, animations, 
+   and component styles for the entire application.
+   
+   COLOR PHILOSOPHY:
+   - Teal (#0D9488): Trust, growth, sustainability - primary brand color
+   - Emerald (#10B981): Nature, community, impact - secondary support
+   - Lime (#84CC16): Energy, hope, action - accent highlights
+   - Amber (#F59E0B): Urgency, warmth, opportunity - category highlights
+   
+   ARCHITECTURE:
+   1. CSS Variables (:root & .dark) - Color tokens in OKLCH format
+   2. @layer base - Global element styles
+   3. @layer utilities - Reusable animation & interaction classes
+   4. @layer components - Pre-built card, button, badge components
+   
+   USAGE IN COMPONENTS:
+   - Use CSS variables: text-primary, bg-card, border-border
+   - Use utility classes: .card-hover, .gradient-overlay, .fade-in-hover
+   - Use component classes: .impact-card, .btn-primary, .category-badge-teal
+   - Apply "group" class to parent, then use group-hover utilities
+   
+   ANIMATION PATTERNS (from job-card.tsx):
+   - Card hover: shadow-xl + lift (-translate-y-1)
+   - Gradient overlay: opacity-0 -> opacity-100 on group-hover
+   - Ring animation: ring-2 expands on hover
+   - Avatar glow: ring-primary/10 -> ring-primary/30
+   
+   MAINTENANCE:
+   - To change brand colors: Update :root and .dark CSS variables
+   - To add animations: Add to @layer utilities
+   - To create new card types: Add to @layer components
+   - Never use inline colors - always use variables or utility classes
+   
+   ============================================ */
+
 :root {
   --background: oklch(0.99 0 0); /* slightly off-white for less strain */
   --foreground: oklch(0.20 0.02 280); /* deep professional slate */
@@ -10,84 +49,104 @@
   --card-foreground: oklch(0.20 0.02 280);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.20 0.02 280);
-  --primary: oklch(0.58 0.24 310); /* Purple #7c3aed */
+  
+  /* Primary: Teal for social impact */
+  --primary: oklch(0.55 0.15 185); /* Teal #0D9488 */
   --primary-foreground: oklch(0.99 0 0); /* crisp white text */
-  --accent: oklch(0.95 0.02 320); /* very subtle purple-pink background */
-  --accent-foreground: oklch(0.30 0.20 310); /* purple text for contrast */
-  --secondary: oklch(0.95 0.02 340); /* subtle pink background */
-  --secondary-foreground: oklch(0.25 0.15 330); /* dark readable text */
-  --muted: oklch(0.96 0.01 280); /* gentle muted bg */
-  --muted-foreground: oklch(0.50 0.02 280); /* readable muted text */
+  
+  --accent: oklch(0.95 0.02 185); /* subtle teal background */
+  --accent-foreground: oklch(0.30 0.15 185); /* teal text for contrast */
+  --secondary: oklch(0.95 0.02 160); /* subtle emerald background */
+  --secondary-foreground: oklch(0.25 0.15 160); /* dark readable text */
+  --muted: oklch(0.96 0.01 180); /* gentle muted bg */
+  --muted-foreground: oklch(0.50 0.02 180); /* readable muted text */
   --destructive: oklch(0.58 0.20 25); /* professional error red */
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.90 0.01 300); /* subtle purple-tinted border */
-  --input: oklch(0.90 0.01 300);
+  --border: oklch(0.90 0.01 185); /* subtle teal-tinted border */
+  --input: oklch(0.90 0.01 185);
   --ring: var(--primary);
-  --chart-1: oklch(0.58 0.24 310); /* purple */
-  --chart-2: oklch(0.65 0.26 340); /* pink */
-  --chart-3: oklch(0.68 0.24 30); /* orange */
-  --chart-4: oklch(0.60 0.22 320); /* purple-pink */
-  --chart-5: oklch(0.62 0.20 350); /* pink-orange */
+  --chart-1: oklch(0.55 0.15 185); /* teal */
+  --chart-2: oklch(0.62 0.18 160); /* emerald */
+  --chart-3: oklch(0.68 0.20 110); /* lime */
+  --chart-4: oklch(0.65 0.20 35); /* amber */
+  --chart-5: oklch(0.58 0.22 350); /* rose */
   --radius: 0.75rem;
-  --sidebar: oklch(0.98 0.01 310);
-  --sidebar-foreground: oklch(0.20 0.02 310);
-  --sidebar-primary: oklch(0.58 0.24 310);
+  --sidebar: oklch(0.98 0.01 185);
+  --sidebar-foreground: oklch(0.20 0.02 185);
+  --sidebar-primary: oklch(0.55 0.15 185);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.94 0.03 320);
-  --sidebar-accent-foreground: oklch(0.25 0.18 310);
-  --sidebar-border: oklch(0.90 0.01 300);
-  --sidebar-ring: oklch(0.58 0.24 310);
+  --sidebar-accent: oklch(0.94 0.03 185);
+  --sidebar-accent-foreground: oklch(0.25 0.15 185);
+  --sidebar-border: oklch(0.90 0.01 185);
+  --sidebar-ring: oklch(0.55 0.15 185);
   
-  /* Brand Colors - Purple-Pink-Orange Theme */
-  --brand-purple: 271 81% 56%; /* Purple #7c3aed */
-  --brand-pink: 330 81% 60%; /* Pink #ec4899 */
-  --brand-orange: 25 95% 53%; /* Orange #f97316 */
-  --brand-gradient-start: var(--brand-purple);
-  --brand-gradient-middle: var(--brand-pink);
-  --brand-gradient-end: var(--brand-orange);
+  /* Brand Colors - Teal-Emerald-Lime Theme for Social Impact */
+  --brand-teal: 173 58% 39%; /* Teal #0D9488 */
+  --brand-emerald: 160 84% 39%; /* Emerald #10B981 */
+  --brand-lime: 84 81% 44%; /* Lime #84CC16 */
+  --brand-amber: 38 92% 50%; /* Amber #F59E0B */
+  --brand-gradient-start: var(--brand-teal);
+  --brand-gradient-middle: var(--brand-emerald);
+  --brand-gradient-end: var(--brand-lime);
+  
+  /* Animation Variables */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Shadow Variables */
+  --shadow-sm: 0 1px 2px 0 rgb(13 148 136 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(13 148 136 / 0.1), 0 2px 4px -1px rgb(13 148 136 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(13 148 136 / 0.2), 0 4px 6px -2px rgb(13 148 136 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(13 148 136 / 0.3), 0 10px 10px -5px rgb(13 148 136 / 0.1);
 }
 
 .dark {
-  --background: oklch(0.15 0.01 280); /* deep professional dark */
-  --foreground: oklch(0.97 0.01 280); /* soft white text */
-  --card: oklch(0.18 0.01 280); /* slightly elevated card surface */
-  --card-foreground: oklch(0.97 0.01 280);
-  --popover: oklch(0.18 0.01 280);
-  --popover-foreground: oklch(0.97 0.01 280);
-  --primary: oklch(0.68 0.24 310); /* bright purple for dark mode */
-  --primary-foreground: oklch(0.15 0.01 280); /* dark text on primary */
-  --accent: oklch(0.28 0.05 320); /* darker purple-pink accent for dark mode */
-  --accent-foreground: oklch(0.97 0.01 280); /* bright white text on accent */
-  --secondary: oklch(0.22 0.02 300); /* elevated dark surface */
-  --secondary-foreground: oklch(0.97 0.01 280);
-  --muted: oklch(0.25 0.01 280); /* muted elevated surface */
-  --muted-foreground: oklch(0.65 0.01 280); /* readable muted text */
-  --destructive: oklch(0.55 0.20 25); /* visible error red */
-  --destructive-foreground: oklch(0.97 0 0);
-  --border: oklch(0.28 0.02 290); /* subtle borders */
-  --input: oklch(0.28 0.02 290);
-  --ring: oklch(0.68 0.24 310);
-  --chart-1: oklch(0.68 0.24 310); /* purple */
-  --chart-2: oklch(0.70 0.26 340); /* pink */
-  --chart-3: oklch(0.72 0.24 30); /* orange */
-  --chart-4: oklch(0.65 0.22 320); /* purple-pink */
-  --chart-5: oklch(0.67 0.20 350); /* pink-orange */
-  --sidebar: oklch(0.17 0.01 280);
-  --sidebar-foreground: oklch(0.97 0.01 280);
-  --sidebar-primary: oklch(0.68 0.24 310);
-  --sidebar-primary-foreground: oklch(0.15 0.01 280);
-  --sidebar-accent: oklch(0.25 0.02 300);
-  --sidebar-accent-foreground: oklch(0.97 0.01 280);
-  --sidebar-border: oklch(0.28 0.02 290);
-  --sidebar-ring: oklch(0.45 0.02 300);
+  --background: oklch(0.14 0.02 250); /* deep dark bg, less jarring blue */
+  --foreground: oklch(0.95 0.01 180); /* light text with slight warmth */
+  --card: oklch(0.18 0.02 250); /* subtle dark surface */
+  --card-foreground: oklch(0.95 0.01 180);
+  --popover: oklch(0.16 0.02 250);
+  --popover-foreground: oklch(0.95 0.01 180);
   
-  /* Brand Colors - Purple-Pink-Orange Theme (same in dark mode) */
-  --brand-purple: 271 81% 56%; /* Purple #7c3aed */
-  --brand-pink: 330 81% 60%; /* Pink #ec4899 */
-  --brand-orange: 25 95% 53%; /* Orange #f97316 */
-  --brand-gradient-start: var(--brand-purple);
-  --brand-gradient-middle: var(--brand-pink);
-  --brand-gradient-end: var(--brand-orange);
+  /* Primary: Lighter teal for dark mode */
+  --primary: oklch(0.65 0.15 185); /* Lighter Teal #14B8A6 */
+  --primary-foreground: oklch(0.15 0.02 250); /* dark text for contrast */
+  
+  --accent: oklch(0.22 0.04 185); /* darker teal accent */
+  --accent-foreground: oklch(0.65 0.15 185); /* lighter teal text */
+  --secondary: oklch(0.22 0.04 160); /* darker emerald accent */
+  --secondary-foreground: oklch(0.70 0.15 160); /* lighter emerald text */
+  --muted: oklch(0.20 0.02 250); /* dark muted */
+  --muted-foreground: oklch(0.60 0.02 180); /* lighter muted text */
+  --destructive: oklch(0.60 0.25 25); /* slightly brighter error in dark */
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.24 0.02 250); /* subtle dark border */
+  --input: oklch(0.24 0.02 250);
+  --ring: var(--primary);
+  --chart-1: oklch(0.65 0.15 185); /* lighter teal */
+  --chart-2: oklch(0.70 0.18 160); /* lighter emerald */
+  --chart-3: oklch(0.75 0.20 110); /* lighter lime */
+  --chart-4: oklch(0.70 0.20 35); /* lighter amber */
+  --chart-5: oklch(0.65 0.22 350); /* lighter rose */
+  --sidebar: oklch(0.15 0.02 250);
+  --sidebar-foreground: oklch(0.95 0.01 185);
+  --sidebar-primary: oklch(0.65 0.15 185);
+  --sidebar-primary-foreground: oklch(0.15 0.02 250);
+  --sidebar-accent: oklch(0.22 0.04 185);
+  --sidebar-accent-foreground: oklch(0.65 0.15 185);
+  --sidebar-border: oklch(0.24 0.02 250);
+  --sidebar-ring: oklch(0.65 0.15 185);
+  
+  /* Brand Colors - Teal-Emerald-Lime Theme (same in dark mode) */
+  --brand-teal: 173 58% 39%; /* Teal #0D9488 */
+  --brand-emerald: 160 84% 39%; /* Emerald #10B981 */
+  --brand-lime: 84 81% 44%; /* Lime #84CC16 */
+  --brand-amber: 38 92% 50%; /* Amber #F59E0B */
+  --brand-gradient-start: var(--brand-teal);
+  --brand-gradient-middle: var(--brand-emerald);
+  --brand-gradient-end: var(--brand-lime);
 }
 
 @theme inline {
@@ -137,5 +196,229 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================
+   UNIFIED DESIGN SYSTEM - @LAYER UTILITIES
+   All animations, hovers, and transitions
+   ============================================ */
+@layer utilities {
+  /* Card Hover Effects - Based on job-card.tsx patterns */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .card-hover-lift {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  /* Gradient Overlays */
+  .gradient-overlay {
+    @apply bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+  
+  .gradient-overlay-emerald {
+    @apply bg-linear-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+  
+  .gradient-overlay-lime {
+    @apply bg-linear-to-br from-lime-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+  
+  /* Ring Animations - Signature hover effect */
+  .ring-hover {
+    @apply transition-all duration-300 hover:ring-2 hover:ring-primary/20;
+  }
+  
+  .ring-hover-emerald {
+    @apply transition-all duration-300 hover:ring-2 hover:ring-emerald-500/20;
+  }
+  
+  /* Avatar/Image Rings */
+  .avatar-ring {
+    @apply ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all duration-300;
+  }
+  
+  /* Fade In/Out Effects */
+  .fade-in-hover {
+    @apply opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+  
+  .fade-out-hover {
+    @apply opacity-100 group-hover:opacity-0 transition-opacity duration-300;
+  }
+  
+  /* Scale Effects */
+  .scale-hover {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .scale-hover-sm {
+    @apply transition-transform duration-300 hover:scale-[1.02];
+  }
+  
+  /* Border Glow Effects */
+  .border-glow {
+    @apply transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(13,148,136,0.3)];
+  }
+  
+  /* Background Transitions */
+  .bg-hover-teal {
+    @apply transition-colors duration-250 hover:bg-teal-50 dark:hover:bg-teal-950/20;
+  }
+  
+  .bg-hover-emerald {
+    @apply transition-colors duration-250 hover:bg-emerald-50 dark:hover:bg-emerald-950/20;
+  }
+  
+  /* Text Glow Effects */
+  .text-glow {
+    @apply transition-all duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(13,148,136,0.6)];
+  }
+  
+  /* Slide Animations */
+  .slide-in-right {
+    @apply translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300;
+  }
+  
+  .slide-in-left {
+    @apply -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300;
+  }
+  
+  /* Pulse Effects */
+  .pulse-on-hover {
+    @apply transition-all duration-300 hover:animate-pulse;
+  }
+  
+  /* Shimmer Loading Effect */
+  .shimmer {
+    @apply bg-linear-to-r from-transparent via-white/20 to-transparent bg-size-[200%_100%];
+    animation: shimmer 2s linear infinite;
+  }
+  
+  /* Smooth Transitions */
+  .transition-fast {
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-base {
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-slow {
+    transition: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .transition-spring {
+    transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+/* ============================================
+   UNIFIED DESIGN SYSTEM - @LAYER COMPONENTS
+   Card layouts, buttons, badges
+   ============================================ */
+@layer components {
+  /* Impact Card - Universal card component */
+  .impact-card {
+    @apply bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-xl relative overflow-hidden;
+  }
+  
+  .impact-card-compact {
+    @apply bg-card border border-border rounded-lg p-4 transition-all duration-300 hover:shadow-xl relative overflow-hidden;
+  }
+  
+  /* Compensation Highlight Box - From job-card.tsx */
+  .compensation-box {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-emerald-500/10 to-lime-500/10 border border-emerald-500/20 text-sm font-medium text-emerald-700 dark:text-emerald-300;
+  }
+  
+  /* Category Badge - Unified badge styling */
+  .category-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .category-badge-teal {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-700 dark:bg-teal-950/40 dark:text-teal-300 hover:bg-teal-200 dark:hover:bg-teal-950/60 transition-colors duration-200;
+  }
+  
+  .category-badge-emerald {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 hover:bg-emerald-200 dark:hover:bg-emerald-950/60 transition-colors duration-200;
+  }
+  
+  .category-badge-amber {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-950/60 transition-colors duration-200;
+  }
+  
+  .category-badge-lime {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-lime-100 text-lime-700 dark:bg-lime-950/40 dark:text-lime-300 hover:bg-lime-200 dark:hover:bg-lime-950/60 transition-colors duration-200;
+  }
+  
+  /* Primary Button - Teal gradient */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium text-white bg-linear-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 transition-all duration-250 shadow-md hover:shadow-lg active:scale-95;
+  }
+  
+  .btn-primary-lg {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-lg rounded-xl font-medium text-white bg-linear-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 transition-all duration-250 shadow-md hover:shadow-lg active:scale-95;
+  }
+  
+  /* Secondary Button - Outline */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-250 active:scale-95;
+  }
+  
+  /* Ghost Button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium text-foreground/70 hover:text-foreground hover:bg-accent transition-colors duration-200;
+  }
+  
+  /* Icon Button */
+  .btn-icon {
+    @apply inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-accent transition-colors duration-200;
+  }
+  
+  /* Trust Badge - For hero and testimonials */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 text-sm font-medium shadow-sm;
+  }
+  
+  /* Stats Card - For metrics display */
+  .stats-card {
+    @apply flex flex-col items-center justify-center p-6 rounded-xl bg-linear-to-br from-primary/5 to-transparent border border-primary/10 group-hover:border-primary/20 transition-colors duration-300;
+  }
+  
+  /* Feature Card - For feature highlights */
+  .feature-card {
+    @apply relative p-8 rounded-2xl bg-linear-to-br from-card to-card/50 border border-border hover:border-primary/30 transition-all duration-300;
+  }
+  
+  /* Testimonial Card */
+  .testimonial-card {
+    @apply relative p-6 rounded-xl bg-card border border-border shadow-md hover:shadow-lg transition-all duration-300;
+  }
+  
+  /* Input Focus Styles */
+  .input-focus {
+    @apply focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
+  }
+  
+  /* Section Container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+  }
+  
+  .section-container-compact {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12;
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-linear-to-r from-teal-600 via-emerald-600 to-lime-600 bg-clip-text text-transparent;
+  }
+  
+  .gradient-text-reverse {
+    @apply bg-linear-to-r from-lime-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent;
   }
 }

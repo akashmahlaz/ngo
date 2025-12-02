@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation"
 import { UniversalNavbar } from "@/components/universal-navbar"
 import { UniversalFooter } from "@/components/universal-footer"
+import { MobileBottomNav } from "@/components/mobile-bottom-nav"
 
 export function SiteLayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -26,6 +27,8 @@ export function SiteLayoutWrapper({ children }: { children: React.ReactNode }) {
       <main className={hideNavAndFooter ? "" : ""}>{children}</main>
       {/* Universal footer shows on public pages only */}
       {!hideNavAndFooter && <UniversalFooter />}
+      {/* Mobile bottom navigation */}
+      {!hideNavAndFooter && <MobileBottomNav />}
     </>
   )
 }

@@ -51,14 +51,14 @@ const categoryConfig: Record<string, {
   },
   'Animal Welfare': {
     icon: Heart,
-    gradient: 'from-pink-500 to-rose-600',
-    color: 'bg-pink-500',
+    gradient: 'from-teal-500 to-emerald-600',
+    color: 'bg-teal-500',
     image: 'https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=1200&q=80'
   },
   Community: {
     icon: Users,
-    gradient: 'from-purple-500 to-violet-600',
-    color: 'bg-purple-500',
+    gradient: 'from-emerald-500 to-lime-600',
+    color: 'bg-emerald-500',
     image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1200&q=80'
   },
   'Women Empowerment': {
@@ -261,7 +261,7 @@ export function FeaturedNGOSpotlight() {
   return (
     <section className="relative bg-gradient-to-b from-white to-neutral-50 py-20 dark:from-neutral-950 dark:to-neutral-900">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-500/5 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-teal-500/5 via-transparent to-transparent"></div>
       
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -294,7 +294,7 @@ export function FeaturedNGOSpotlight() {
             className="mb-12"
           >
             <Link href={`/ngos/${spotlightNGO._id}`}>
-              <Card className="group relative overflow-hidden border-2 border-neutral-200 bg-white shadow-2xl transition-all hover:border-purple-400 hover:shadow-purple-500/20 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-purple-600">
+              <Card className="group relative overflow-hidden border-2 border-neutral-200 bg-white shadow-2xl transition-all hover:border-teal-400 hover:shadow-teal-500/20 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-teal-600">
                 <div className="flex flex-col lg:flex-row">
                   {/* Image Side */}
                   <div className="relative h-64 lg:h-[500px] lg:w-1/2">
@@ -391,9 +391,9 @@ export function FeaturedNGOSpotlight() {
                       </p>
 
                       {/* Impact Highlight */}
-                      <div className="mb-6 rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 p-4 dark:from-purple-500/20 dark:to-pink-500/20">
+                      <div className="mb-6 rounded-xl bg-linear-to-r from-teal-500/10 to-emerald-500/10 p-4 dark:from-teal-500/20 dark:to-emerald-500/20">
                         <div className="flex items-center gap-3">
-                          <div className="rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 p-2 sm:p-3 flex-shrink-0">
+                          <div className="rounded-lg bg-linear-to-br from-teal-500 to-emerald-500 p-2 sm:p-3 shrink-0">
                             <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
                           </div>
                           <div className="min-w-0">
@@ -433,7 +433,7 @@ export function FeaturedNGOSpotlight() {
 
                     {/* Bottom Section - CTA */}
                     <div className="mt-6 sm:mt-8">
-                      <Button size="lg" className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600">
+                      <Button size="lg" className="w-full bg-linear-to-r from-teal-500 to-emerald-500 text-white hover:from-teal-600 hover:to-emerald-600 shadow-brand-lg">
                         View Opportunities
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -449,7 +449,7 @@ export function FeaturedNGOSpotlight() {
                       onClick={() => setSpotlightIndex(index)}
                       className={`h-2 w-2 rounded-full transition-all ${
                         index === spotlightIndex 
-                          ? 'w-8 bg-purple-500' 
+                          ? 'w-8 bg-teal-500' 
                           : 'bg-neutral-400 dark:bg-neutral-600'
                       }`}
                       aria-label={`View NGO ${index + 1}`}

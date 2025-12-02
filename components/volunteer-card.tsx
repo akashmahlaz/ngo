@@ -85,9 +85,9 @@ export function VolunteerCard({ volunteer, viewMode = "grid" }: VolunteerCardPro
   // Grid View - Creative Card Design
   if (viewMode === "grid") {
     return (
-      <Card className="group relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 bg-gradient-to-br from-background via-background to-primary/5">
+      <Card className="impact-card card-hover-lift border-2 hover:border-primary/50 bg-linear-to-br from-background via-background to-primary/5">
         {/* Decorative corner accent */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full -mr-16 -mt-16 opacity-50 group-hover:opacity-100 transition-opacity" />
+        <div className="gradient-overlay absolute top-0 right-0 w-32 h-32 rounded-bl-full -mr-16 -mt-16" />
         
         {/* Verified/Top badge */}
         {volunteer.verified && (
@@ -113,7 +113,7 @@ export function VolunteerCard({ volunteer, viewMode = "grid" }: VolunteerCardPro
           {/* Header: Avatar + Name + Title */}
           <div className="flex items-start gap-4">
             <div className="relative">
-              <Avatar className="h-20 w-20 ring-4 ring-background shadow-xl border-2 border-primary/20 group-hover:ring-primary/30 transition-all">
+              <Avatar className="avatar-ring h-20 w-20 shadow-xl border-2 border-primary/20">
                 <AvatarImage src={volunteer.avatarUrl} alt={volunteer.name} />
                 <AvatarFallback className="bg-gradient-to-br from-primary via-primary/80 to-primary/60 text-white text-2xl font-bold">
                   {volunteer.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
@@ -145,7 +145,7 @@ export function VolunteerCard({ volunteer, viewMode = "grid" }: VolunteerCardPro
           </div>
 
           {/* Pricing Section - Eye-Catching */}
-          <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-l-4 border-primary rounded-lg p-4 space-y-2">
+          <div className="compensation-box border-l-4 border-primary rounded-lg p-4 space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
@@ -173,7 +173,7 @@ export function VolunteerCard({ volunteer, viewMode = "grid" }: VolunteerCardPro
           {/* Stats Row - 3 Column Grid */}
           <div className="grid grid-cols-3 gap-2">
             {/* Success Rate */}
-            <div className="bg-accent/50 rounded-lg p-2 text-center">
+            <div className="stats-card bg-accent/50 rounded-lg p-2 text-center">
               <div className="flex items-center justify-center gap-1 mb-1">
                 <Target className="h-3 w-3 text-primary" />
               </div>
@@ -253,7 +253,7 @@ export function VolunteerCard({ volunteer, viewMode = "grid" }: VolunteerCardPro
 
           {/* Actions */}
           <div className="flex gap-2 pt-2 border-t">
-            <Button asChild className="flex-1" size="sm">
+            <Button asChild className="flex-1 scale-hover-sm" size="sm">
               <Link href={`/volunteers/${volunteer._id}`}>
                 View Profile
                 <ArrowRight className="h-3 w-3 ml-1" />
@@ -298,7 +298,7 @@ export function VolunteerCard({ volunteer, viewMode = "grid" }: VolunteerCardPro
 
             <div className="flex-1 min-w-0">
               <Link href={`/volunteers/${volunteer._id}`} className="group/link">
-                <h3 className="text-2xl font-bold group-hover/link:text-primary transition-colors">
+                <h3 className="text-2xl font-bold gradient-text group-hover/link:opacity-80 transition-opacity">
                   {volunteer.name}
                 </h3>
               </Link>
@@ -398,7 +398,7 @@ export function VolunteerCard({ volunteer, viewMode = "grid" }: VolunteerCardPro
           {/* Right: Pricing & Actions */}
           <div className="flex flex-col justify-between gap-4 min-w-[200px]">
             {/* Pricing Card */}
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 rounded-xl p-4 space-y-3">
+            <div className="compensation-box border-2 border-primary/20 rounded-xl p-4 space-y-3">
               {/* Volunteer Rate */}
               <div>
                 <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1">

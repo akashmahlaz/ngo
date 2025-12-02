@@ -20,13 +20,13 @@ export function Testimonials() {
   return (
     <section className="container mx-auto px-4 py-12">
       <div className="mb-8">
-        <h2 className="text-balance text-2xl font-semibold md:text-3xl">What our community says</h2>
+        <h2 className="gradient-text text-balance text-2xl font-semibold md:text-3xl">What our community says</h2>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
         {testimonials.map((t) => (
-          <Card key={t.name} className="grid grid-cols-[80px_1fr] items-center gap-4 p-4">
+          <Card key={t.name} className="testimonial-card grid grid-cols-[80px_1fr] items-center gap-4">
             <CardHeader className="p-0">
-              <Avatar className="h-16 w-16">
+              <Avatar className="avatar-ring h-16 w-16">
                 <AvatarImage src={t.img || "/placeholder.svg"} alt={`${t.name} avatar`} />
                 <AvatarFallback>{t.name.slice(0, 2).toUpperCase()}</AvatarFallback>
               </Avatar>

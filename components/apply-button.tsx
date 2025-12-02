@@ -48,7 +48,7 @@ export function ApplyButton({ jobId }: { jobId: string }) {
     return (
       <div className="space-y-4">
         <p className="text-sm text-muted-foreground">Sign in to apply for this role</p>
-        <Button onClick={() => router.push("/signin")} className="w-full">
+        <Button className="btn-primary w-full" onClick={() => router.push("/signin")}>
           Sign In
         </Button>
       </div>

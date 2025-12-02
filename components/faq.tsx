@@ -17,9 +17,9 @@ export function FAQ() {
   ]
 
   return (
-    <section className="container mx-auto px-4 py-12">
+    <section className="section-container">
       <div className="mb-8">
-        <h2 className="text-balance text-2xl font-semibold md:text-3xl">Frequently asked questions</h2>
+        <h2 className="gradient-text text-balance text-2xl font-semibold md:text-3xl">Frequently asked questions</h2>
       </div>
       <Accordion type="single" collapsible className="w-full">
         {items.map((it, idx) => (

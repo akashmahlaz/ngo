@@ -124,7 +124,7 @@ const categoryColors: Record<string, string> = {
   Education: "bg-blue-500/90",
   Healthcare: "bg-red-500/90",
   Environment: "bg-green-500/90",
-  Technology: "bg-purple-500/90",
+  Technology: "bg-teal-500/90",
   Community: "bg-orange-500/90"
 }
 
@@ -269,7 +269,7 @@ export function FeaturedVolunteersCarousel() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-neutral-50 to-white py-20 dark:from-neutral-950 dark:to-neutral-900">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-100/20 via-transparent to-transparent dark:from-purple-900/10"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-100/20 via-transparent to-transparent dark:from-teal-900/10"></div>
       
       <div className="relative">
         {/* Header */}
@@ -386,7 +386,7 @@ export function FeaturedVolunteersCarousel() {
           className="mt-12 text-center px-4"
         >
           <Link href="/volunteers">
-            <Button size="lg" className="group bg-purple-600 hover:bg-purple-700 text-white">
+            <Button size="lg" className="group bg-linear-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white shadow-brand-lg">
               View All Volunteers
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>

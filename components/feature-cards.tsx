@@ -33,14 +33,14 @@ export function FeatureCards() {
   return (
     <section className="container mx-auto px-4 py-12">
       <div className="mb-8 flex items-end justify-between">
-        <h2 className="text-balance text-2xl font-semibold md:text-3xl">A platform built for impact</h2>
+        <h2 className="gradient-text text-balance text-2xl font-semibold md:text-3xl">A platform built for impact</h2>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {features.map((f) => (
-          <Card key={f.title} className="transition hover:shadow-sm">
+          <Card key={f.title} className="feature-card group">
             <CardHeader>
               <div className="mb-2 flex items-center gap-2">
-                <f.icon className="h-5 w-5 text-primary" />
+                <f.icon className="h-5 w-5 text-primary scale-hover-sm" />
                 <Badge variant="secondary">{f.badge}</Badge>
               </div>
               <CardTitle>{f.title}</CardTitle>
